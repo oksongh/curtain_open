@@ -1,7 +1,4 @@
 #include <Arduino.h>
-#include <WiFi.h>
-#include <WiFiUdp.h>
-
 
 void setup() {
   // put your setup code here, to run once:
