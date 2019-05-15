@@ -1,3 +1,6 @@
+#ifndef WIFI_H
+#define WIFI_H
+
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
@@ -13,3 +16,5 @@ WiFiUdp udp;
 void setup_wifi(){
   udp.begin(ip, localPort);
 }
+
+#endif
