@@ -1,25 +1,31 @@
 #ifndef ETC_H
 #define ETC_H
 
-void parse_exe(const String[] s){
-  switch (s[0]) {
-    case "open":
-      state |= open;
-    default:
-      state |= none;
+#include "state.h"
+#include "pinassign.h"
+void parse_exe(const String s[]){
+  State newState;
+  if (s[0]=="open"){
+    newState.state |= State::open;
   }
+  // switch (s[0]) {
+  //   case "open":
+  //     state |= open;
+  //   case "close":
+  //     state |= close;
+  //   case "reserve":
+  //
+  //   default:
+  //     state |= none;
+  // }
 }
 
-const uint8_t none =  0b00000;
-const uint8_t close = 0b00001;
-const uint8_t open =  0b00010;
-
-uint8_t button_read(uint8_t state){
+State read_button(State state){
 
   if(digitalRead(closepin)){
-    state |= close;
+    state.state |= State::close;
   }else if(digitalRead(openpin)){
-    state |= open;
+    state.state |= State::open;
   }
   return state;
 }
