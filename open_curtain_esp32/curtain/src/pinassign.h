@@ -1,5 +1,5 @@
 #ifndef PINASSIGN_H
 #define PINASSIGN_H
-int openpin = 5;
-int closepin =6;
+const int openpin = 5;
+const int closepin = 6;
 #endif

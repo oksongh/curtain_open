@@ -10,7 +10,11 @@ public:
   static const uint8_t open =  0b00010;
   uint8_t state;
 
-  State();
+  State(){
+    state = none;
+
+  }
+
   /*
   static uint8_t operator|(){
 
