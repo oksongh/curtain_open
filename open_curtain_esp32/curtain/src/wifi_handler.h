@@ -26,13 +26,15 @@ public:
     delay(100);
     WiFi.softAPConfig(ip, ip, subnet);
   }
-  void read_udp(){
+  // TODO convert void to string
+  String read_udp(){
     if(udp.parsePacket() > 0){
 
       msg = udp.readString();
       Serial.printf("msg:%s",msg.c_str());
+      return msg;
     }
-
+    return " ";
   }
 
 };
