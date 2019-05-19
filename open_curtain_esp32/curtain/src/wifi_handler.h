@@ -5,11 +5,11 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
-const char ssid[] = "curtain"; // SSID
-const char pass[] = "carteneropen";  // password
-const int localPort = 8000;      // ポート番号
-const IPAddress ip(192, 168, 4, 1);       // IPアドレス(ゲートウェイも兼ねる)
-const IPAddress subnet(255, 255, 255, 0); // サブネットマスク
+const char ssid[] = "curtain";
+const char pass[] = "carteneropen";
+const int localPort = 8000;
+const IPAddress ip(192, 168, 4, 1);
+const IPAddress subnet(255, 255, 255, 0);
 
 class wifi_handler {
 private:
@@ -26,7 +26,7 @@ public:
     delay(100);
     WiFi.softAPConfig(ip, ip, subnet);
   }
-  // TODO convert void to string
+
   String read_udp(){
     if(udp.parsePacket() > 0){
 

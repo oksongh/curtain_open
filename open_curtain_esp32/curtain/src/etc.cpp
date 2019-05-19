@@ -5,19 +5,19 @@ State parse(const String command){
   State newState;
   std::vector<String> vecstr = split(command);
 
-  if (vecstr[0] == Keyword.open){
+  if (vecstr[0] == str_open){
     newState.state |= State::open;
 
-  }else if(vecstr[0] == "close"){
+  }else if(vecstr[0] == str_close){
     newState.state |= State::close;
 
-  }else if(vecstr[0] == "reserve"){
+  }else if(vecstr[0] == str_reserve){
     if(vecstr[1]){
 
     }
-      if(vecstr[2] == "open"){
+      if(vecstr[2] == str_open){
 
-      }else if(vecstr[2] == "close"){
+      }else if(vecstr[2] == str_close){
 
       }else{
 

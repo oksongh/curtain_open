@@ -1,9 +1,8 @@
 #ifndef KEYWORD_H
 #define KEYWORD_H
-typedef struct {
-  const char *open = "open";
-  const char *close = "close";
-  const char *reserve = "reserve";
-} Keyword;
+
+const String str_open = "open";
+const String str_close = "close";
+const String str_reserve = "reserve";
 
 #endif
