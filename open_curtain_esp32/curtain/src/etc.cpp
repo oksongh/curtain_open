@@ -1,9 +1,11 @@
 #include "etc.h"
 
 State parse(const String command){
-
+// command :str_none,and so on
   State newState;
-  std::vector<String> vecstr = split(command);
+  std::vector<String> vecstr;
+
+  split(command, vecstr);
 
   if (vecstr[0] == str_open){
     newState.state |= State::open;
@@ -42,14 +44,17 @@ State read_button(State state){
   return state;
 }
 
-std::vector<String> split(const String s){
-  std::vector<String> vecstr;
+void split(const String s,std::vector<String> &vecstr){
 
   for(int i = 0,prei = 0;i < s.length();i++){
-    if(s[i] == ' '){
+    if(s[i] == char_split){
       vecstr.push_back(s.substring(prei, i));
       prei = i;
     }
   }
-  return vecstr;
+  // no space
+  if(vecstr.empty()){
+    vecstr.push_back(s);
+  }
+
 }

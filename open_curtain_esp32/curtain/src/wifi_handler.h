@@ -4,9 +4,10 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
+#include "keyword.h"
 
 const char ssid[] = "curtain";
-const char pass[] = "carteneropen";
+const char pass[] = "curtainopen";
 const int localPort = 8000;
 const IPAddress ip(192, 168, 4, 1);
 const IPAddress subnet(255, 255, 255, 0);
@@ -23,6 +24,7 @@ public:
   }
   void setup_wifiAP(){
     WiFi.softAP(ssid, pass);
+    // WiFi.softAP(ssid);
     delay(100);
     WiFi.softAPConfig(ip, ip, subnet);
   }
@@ -31,10 +33,11 @@ public:
     if(udp.parsePacket() > 0){
 
       msg = udp.readString();
-      Serial.printf("msg:%s",msg.c_str());
+      Serial.printf("\nmsg:%s\n",msg.c_str());
       return msg;
     }
-    return " ";
+
+    return str_none;
   }
 
 };
