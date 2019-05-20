@@ -9,7 +9,7 @@
 
 State parse(const String command);
 
-State read_button(State state);
+void read_button(State &state);
 
 // std::vector<String> split(const String s);
 void split(const String,std::vector<String> &vecstr);

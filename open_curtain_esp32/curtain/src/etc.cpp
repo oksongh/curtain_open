@@ -32,7 +32,7 @@ State parse(const String command){
   return newState;
 }
 
-State read_button(State state){
+void read_button(State &state){
 
   if(digitalRead(closepin)){
     state.state |= State::close;
@@ -41,7 +41,6 @@ State read_button(State state){
   }else{
     state.state |= State::none;
   }
-  return state;
 }
 
 void split(const String s,std::vector<String> &vecstr){

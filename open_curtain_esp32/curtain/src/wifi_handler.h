@@ -21,6 +21,7 @@ private:
 public:
   void setup_wifi(){
     udp.begin(ip, localPort);
+    Serial.printf("ip:%s,port%d",ip.toString().c_str(),localPort);
   }
   void setup_wifiAP(){
     WiFi.softAP(ssid, pass);
