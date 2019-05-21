@@ -1,18 +1,24 @@
 #ifndef SCHDULE_H
 #define SCHDULE_H
 
+#include <Arduino.h>
 #include "state.h"
 
 class Schedule{
 private:
   long _exetime_hour;//8
   long _exetime_min;//20
-  State _state;
   static long _now;
+  uint8_t state;
+
   long to_time(char c1,char c2){
     return (c1 - '0') * 10 + c2 - '0';
   }
 public:
+  static const uint8_t none = 0b00000;
+  static const uint8_t close = 0b00001;
+  static const uint8_t open =  0b00010;
+
   State get_state(){
     return _state;
   }
