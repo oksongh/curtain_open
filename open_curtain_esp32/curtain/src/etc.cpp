@@ -2,18 +2,22 @@
 
 State parse(const String command){
 // command :str_none,and so on
-  State newState;
+  // State newState;
+  Schedule sche;
   std::vector<String> vecstr;
 
   split(command, vecstr);
 
   if (vecstr[0] == str_open){
-    newState.state |= State::open;
+    sche.or_state(State::open);
 
   }else if(vecstr[0] == str_close){
-    newState.state |= State::close;
+    sche.or_state(State::close);
 
   }else if(vecstr[0] == str_reserve){
+    // 受け取ってから[1]s後に実行
+    schedule.vecstr[1].toInt();
+    schedule.state.state |= State.
     if(vecstr[1]){
 
     }
@@ -24,6 +28,8 @@ State parse(const String command){
       }else{
 
       }
+  }else if{
+
 
   }else{
     // newState.state == State::none;

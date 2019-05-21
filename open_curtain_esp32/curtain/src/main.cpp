@@ -22,8 +22,11 @@ void loop() {
   command = wh.read_udp();
   state = parse(command);
   read_button(state);
+  millis()
+
   Serial.printf("state:");
   Serial.println(state.state,BIN);
+  state.
   delay(800);
 
 }
