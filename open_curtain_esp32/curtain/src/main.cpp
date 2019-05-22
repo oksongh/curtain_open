@@ -1,12 +1,10 @@
 #include <Arduino.h>
 #include "wifi_handler.h"
 #include "etc.h"
-#include "state.h"
 #include "pinassign.h"
 
 wifi_handler wh;
 String command;
-State state;
 
 void setup() {
   // put your setup code here, to run once:

@@ -2,10 +2,10 @@
 #define SCHDULE_H
 
 #include <Arduino.h>
-#include "state.h"
 
 class Schedule{
 private:
+  bool is_reserve;
   long _exetime_hour;//8
   long _exetime_min;//20
   static long _now;
@@ -22,19 +22,21 @@ public:
   State get_state(){
     return _state;
   }
-  void set_state(State s){
-    _state = s;
+  void set_state(uint8_t i){
+    _state = i;
   }
-  void or_state(State s){
-    _state.state |= s.state;
+  void or_state(uint8_t i){
+    _state |= i;
   }
   void set_time(const char* str,int len){
     if(len != 4){
+      Serial.printf("%s\n","len == 0" );
       return;
     }
     _exetime_hour = to_time(str[0], str[1]);
     _exetime_min = to_time(str[2], str[3]);
   }
+
 
 };
 
