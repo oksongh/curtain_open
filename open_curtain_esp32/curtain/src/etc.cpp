@@ -35,11 +35,10 @@ State parse(const String command){
 State read_button(State state){
 
   if(digitalRead(closepin)){
-    state.state |= State::close;
+    state.state = State::close;
   }else if(digitalRead(openpin)){
-    state.state |= State::open;
+    state.state = State::open;
   }else{
-    state.state |= State::none;
   }
   return state;
 }
