@@ -44,17 +44,16 @@ State read_button(State state){
   return state;
 }
 
-void split(const String s,std::vector<String> &vecstr){
-
+void split(String s,std::vector<String> &vecstr){
+  if(s.length() == 0){
+    return;
+  }
+  s += char_split;
   for(int i = 0,prei = 0;i < s.length();i++){
     if(s[i] == char_split){
       vecstr.push_back(s.substring(prei, i));
       prei = i;
     }
-  }
-  // no space
-  if(vecstr.empty()){
-    vecstr.push_back(s);
   }
 
 }
