@@ -73,26 +73,27 @@ void Schedule::parse(String msg){
     Serial.printf("_vecstr %s\n", s.c_str());
   }
 
-  switch (_vecstr.size()) {
-    case 1:
-      if(_vecstr[0] == str_open){
-        _state |= open;
+  for (size_t i = 0; i < _vecstr.size();) {
+  /* code */
 
-      }else if(_vecstr[0] == str_close){
-        _state |= close;
+    if(_vecstr[0] == str_open){
+      _state |= open;
+      i++;
+    }else if(_vecstr[0] == str_close){
+      _state |= close;
+      i++;
+    }else if(_vecstr[0] == str_set){
 
-      }else{
+    }else if(_vecstr[0] == str_reserve){
+      // etc 1220,0930,2310
+      set_time(_vecstr[1].c_str(), _vecstr[1].length());
+      i += 2;
 
-      }
-    case 2:
-      if(_vecstr[0] == str_reserve){
-        // etc 1220,0930,2310
-        set_time(_vecstr[1].c_str(), _vecstr[1].length());
+    }else if(_vecstr[0] == str_now){
+      set_now(_vecstr[1].c_str(),_vecstr[1].length());
+      i += 2;
 
-      }else if(_vecstr[0] == str_now){
-        set_now(_vecstr[1].c_str(),_vecstr[1].length());
-
-      }else{
-      }
+    }else{
+    }
   }
 }
