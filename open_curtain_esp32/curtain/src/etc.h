@@ -6,6 +6,7 @@
 #include "state.h"
 #include "pinassign.h"
 #include "keyword.h"
+#include "task.h"
 
 State parse(const String command);
 

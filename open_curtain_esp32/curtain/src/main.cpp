@@ -3,10 +3,12 @@
 #include "etc.h"
 #include "state.h"
 #include "pinassign.h"
+#include "task.h"
 
 wifi_handler wh;
 String command;
 State state;
+Task task;
 
 void setup() {
   // put your setup code here, to run once:

@@ -1,29 +1,35 @@
 #include "etc.h"
 
-State parse(const String command){
+void parse(const String command,State &state,Task &task){
 // command :str_none,and so on
   State newState;
   std::vector<String> vecstr;
 
   split(command, vecstr);
-
-  if (vecstr[0] == str_open){
+  int i = 0;
+  if (vecstr[i] == str_open){
     newState.state |= State::open;
+    i++;
 
-  }else if(vecstr[0] == str_close){
+  }else if(vecstr[i] == str_close){
     newState.state |= State::close;
+    i++;
 
-  }else if(vecstr[0] == str_reserve){
-    if(vecstr[1]){
+  }else if(vecstr[i] == str_reserve){
+    i++;
+
+    if(vecstr[i] == str_open){
+      task.open();
+      i++;
+    }else if(vecstr[i] == str_close){
+      task.close();
+      i++;
+    }else if(vecstr[i] == str_buzzer){
+      task.buzzer();
+      i++;
 
     }
-      if(vecstr[2] == str_open){
 
-      }else if(vecstr[2] == str_close){
-
-      }else{
-
-      }
 
   }else{
     // newState.state == State::none;
