@@ -2,9 +2,9 @@
 #define TASK_H value
 
 #include "state.h"
-class task{
+class Task{
 public:
-  task() {
+  Task() {
     output_state.state = State::none;
   }
   void loop(State &state){

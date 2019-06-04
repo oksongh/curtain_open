@@ -22,7 +22,10 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   command = wh.read_udp();
-  state = parse(command);
+  state = parse(command,state,task);
+  task.loop(state);
+
+  read_button(state);
   Serial.printf("state:");
   Serial.println(state.state,BIN);
   delay(800);

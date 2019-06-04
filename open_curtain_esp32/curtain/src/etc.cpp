@@ -30,15 +30,13 @@ void parse(const String command,State &state,Task &task){
 
     }
 
-
   }else{
     // newState.state == State::none;
 
   }
-  return newState;
 }
 
-State read_button(State state){
+void read_button(State &state){
 
   if(digitalRead(closepin)){
     state.state = State::close;
@@ -46,7 +44,6 @@ State read_button(State state){
     state.state = State::open;
   }else{
   }
-  return state;
 }
 
 void split(String s,std::vector<String> &vecstr){
