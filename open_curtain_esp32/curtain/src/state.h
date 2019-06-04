@@ -12,7 +12,7 @@ public:
   uint8_t state;
 
   State(){
-    _state = none;
+    state = none;
 
   }
 

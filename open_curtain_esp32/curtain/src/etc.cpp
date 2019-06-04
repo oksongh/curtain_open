@@ -6,6 +6,10 @@ void parse(const String command,State &state,Task &task){
   std::vector<String> vecstr;
 
   split(command, vecstr);
+  if(vecstr.size() == 0){
+    return;
+  }
+  Serial.printf("size%d \n", vecstr.size());
   int i = 0;
   if (vecstr[i] == str_open){
     newState.state |= State::open;

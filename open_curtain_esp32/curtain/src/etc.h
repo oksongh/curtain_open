@@ -8,9 +8,9 @@
 #include "keyword.h"
 #include "task.h"
 
-State parse(const String command);
+void parse(const String command,State &state,Task &task);
 
-State read_button(State state);
+void read_button(State &state);
 
 // std::vector<String> split(const String s);
 void split(const String,std::vector<String> &vecstr);
