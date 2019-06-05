@@ -1,5 +1,5 @@
 #ifndef TASK_H
-#define TASK_H value
+#define TASK_H
 
 #include <Arduino.h>
 #include "state.h"
@@ -11,8 +11,9 @@ public:
 
   }
   void check_time(State &state){
-    unsigned long errhour = (millis() - stdmill)%(1000*60*60);
-    unsigned long errmin = (millis() - stdmill)%(1000*60);
+    Serial.printf("millis %ld \n", millis());
+    unsigned long errhour = std::floor((double)(millis() - stdmill)/(1000*60*60));
+    unsigned long errmin = std::floor((double)(millis() - stdmill)/(1000*60));
     Serial.printf("errhour %ld,errmin:%ld\n", errhour,errmin);
 
     if(errhour + standard_hm.hour > reserve_hm.hour){
@@ -35,11 +36,14 @@ public:
     standard_hm.hour = time.substring(2).toInt();
     standard_hm.min = time.substring(2,4).toInt();
     stdmill = millis();
+    Serial.printf("std hour %d min %d\n",standard_hm.hour ,standard_hm.min);
 
   }
   void set_reserve_time(String time){
     reserve_hm.hour = time.substring(2).toInt();
     reserve_hm.min = time.substring(2,4).toInt();
+    Serial.printf("res hour %d min %d\n",standard_hm.hour ,standard_hm.min);
+
 
   }
   // virtual void set_output() = 0;

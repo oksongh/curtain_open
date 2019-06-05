@@ -2,22 +2,26 @@
 
 void parse(const String command,State &state,Task &task){
 // command :str_none,and so on
-  State newState;
+
   std::vector<String> vecstr;
 
   split(command, vecstr);
   if(vecstr.size() == 0){
+    Serial.printf("size%d \n", vecstr.size());
     return;
   }
+
   Serial.printf("size%d \n", vecstr.size());
   int i = 0;
+  Serial.printf("%s\n", (str_reserve+" "+str_open+" "+str_set_std_time+" "+str_set_reserve_time).c_str());
   try{
     if (vecstr[i] == str_open){
-      newState.state |= State::open;
+      state.state |= State::open;
+
       i++;
 
     }else if(vecstr[i] == str_close){
-      newState.state |= State::close;
+      state.state |= State::close;
       i++;
 
     }else if(vecstr[i] == str_reserve){
@@ -49,9 +53,11 @@ void parse(const String command,State &state,Task &task){
       }
 
     }else{
-      // newState.state == State::none;
+
 
     }
+    Serial.printf("i:%d \n", i);
+
   }catch(...){
     Serial.printf("int i:%d,vecsize:%d",i,vecstr.size());
   }
@@ -66,6 +72,8 @@ void read_button(State &state){
   }
   if(isclose){
     state.state = State::close;
+    Serial.println("close");
+
   }else if(isopen){
     state.state = State::open;
     Serial.println("open");
@@ -96,9 +104,9 @@ void motor_setup(){
 
 }
 void output(State state) {
-  float delaytime = 0;
 
   if((state.state & State::open) != 0){
+    Serial.println("open in the output!");
     open_curtain();
   }
   if((state.state & State::close) != 0){

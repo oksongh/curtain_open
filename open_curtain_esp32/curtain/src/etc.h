@@ -18,6 +18,8 @@ void split(const String,std::vector<String> &vecstr);
 
 void output(State state);
 
+void motor_setup();
+
 void open_curtain();
 
 void close_curtain();
