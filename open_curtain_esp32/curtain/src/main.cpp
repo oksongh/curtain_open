@@ -24,7 +24,7 @@ void loop() {
   command = wh.read_udp();
   parse(command,state,task);
   task.loop(state);
-
+  // output(state,task);
   read_button(state);
   Serial.printf("state:");
   Serial.println(state.state,BIN);

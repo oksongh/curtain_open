@@ -1,5 +1,8 @@
 #ifndef PINASSIGN_H
 #define PINASSIGN_H
-const int openpin = 5;
-const int closepin = 6;
+const int open_button = 25;
+const int close_button = 26;
+const int motorA = 12;
+const int motorB = 12;
+
 #endif

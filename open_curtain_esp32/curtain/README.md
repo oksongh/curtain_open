@@ -21,33 +21,36 @@
 
     現在時刻(hh:mm) = 基準時刻(hh:mm)+(現在時刻RTC(min)-基準時刻のとき取得したRTC(min))/60h+%
 
-    タスクスーパークラス
+    タスククラス
     loop:現在時刻が予約された時刻になったか ->yes state=getstate
                                       ->no 何もしない
+    現在時刻hour mim
+
+
     init(){
 
       set_time()
       set_output()
     }
+    loop(){
+
+    }
     set_time(kijunn,yoyaku)
-    get_state()
+    get_state(){return output_state}
 
     output_state
     open()
     close()
     buzzer()
 
-    vertual set_output()
-    -
-    子クラス
-
-    @override
-    set_output()
-      open...などする仕事ごとにクラスを作る
     カーテン開ける&＆ブザー鳴らす
     カーテン開ける
     カーテン閉める
     カーテン閉める&＆ブザー鳴らす
+
+    timeクラス
+    long nowRTC
+    millis()/(1000*60)
 
   必要なもの
     esp32
