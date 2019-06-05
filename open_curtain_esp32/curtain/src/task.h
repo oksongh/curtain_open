@@ -10,13 +10,17 @@ public:
     output_state.state = State::none;
 
   }
-  void check(State &state){
+  void check_time(State &state){
     unsigned long errhour = (millis() - stdmill)%(1000*60*60);
     unsigned long errmin = (millis() - stdmill)%(1000*60);
-    if(){
+    Serial.printf("errhour %ld,errmin:%ld\n", errhour,errmin);
 
+    if(errhour + standard_hm.hour > reserve_hm.hour){
+      if(errmin + standard_hm.min > reserve_hm.min){
+        state.state |= output_state.state;
+
+      }
     }
-    state.state |= output_state.state;
   }
   void open(){
     output_state.state |= State::open;
@@ -27,18 +31,22 @@ public:
   void buzzer(){
     output_state.state |= State::buzzer;
   }
-  void set_stdtime(String time){
-    standard.hour = time.substring(2).toInt();
-    standard.min = time.substring(2,4).toInt();
+  void set_std_time(String time){
+    standard_hm.hour = time.substring(2).toInt();
+    standard_hm.min = time.substring(2,4).toInt();
     stdmill = millis();
 
   }
-  void set_reservetime(String time)
+  void set_reserve_time(String time){
+    reserve_hm.hour = time.substring(2).toInt();
+    reserve_hm.min = time.substring(2,4).toInt();
+
+  }
   // virtual void set_output() = 0;
 
 private:
   State output_state;
-  Time_hm standard;
+  Time_hm standard_hm;
   Time_hm reserve_hm;
   unsigned long stdmill;
 };

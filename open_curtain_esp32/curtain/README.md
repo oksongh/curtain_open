@@ -3,6 +3,9 @@
     wifiで時刻を設定してその時刻になったらカーテンを開ける
     ボタンを押すとカーテンが開閉する
 
+    button押す->open -> state = open
+               close -> state = close
+
   プログラム
     wifiでデータを受け取る
 
@@ -19,7 +22,7 @@
             close 時刻 buzzerのオンオフ(bool)
 
 
-    現在時刻(hh:mm) = 基準時刻(hh:mm)+(現在時刻RTC(min)-基準時刻のとき取得したRTC(min))/60h+%
+    現在時刻(hh:mm) = 基準時刻(hh:mm)+(現在時刻millis(min)-基準時刻のとき取得したmillis(min))/60h+%
 
     タスククラス
     loop:現在時刻が予約された時刻になったか ->yes state=getstate
@@ -48,9 +51,16 @@
     カーテン閉める
     カーテン閉める&＆ブザー鳴らす
 
-    timeクラス
-    long nowRTC
-    millis()/(1000*60)
+    time_handlerクラス
+    long nowRTC(){
+
+    }
+    <!-- get_now_by_mills(){
+      long
+      millis()/(1000*60)
+
+    } -->
+
 
   必要なもの
     esp32

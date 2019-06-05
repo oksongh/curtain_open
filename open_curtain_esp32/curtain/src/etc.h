@@ -16,7 +16,7 @@ void read_button(State &state);
 // std::vector<String> split(const String s);
 void split(const String,std::vector<String> &vecstr);
 
-void output(State state,Task task);
+void output(State state);
 
 void open_curtain();
 

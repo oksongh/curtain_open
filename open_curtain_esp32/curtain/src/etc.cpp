@@ -39,12 +39,12 @@ void parse(const String command,State &state,Task &task){
 
       if(vecstr[i] == str_set_std_time){
         i++;
-        task.set_stdtime(vecstr[i]);
+        task.set_std_time(vecstr[i]);
         i++;
       }
       if(vecstr[i] == str_set_reserve_time){
         i++;
-        task.str_set_reserve_time(vecstr[i]);
+        task.set_reserve_time(vecstr[i]);
         i++;
       }
 
