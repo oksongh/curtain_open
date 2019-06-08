@@ -29,7 +29,7 @@ void loop() {
   task.check_time(state);
 
   read_button(state);
-  
+
 
   Serial.printf("state:");
   Serial.println(state.state,BIN);
@@ -38,6 +38,6 @@ void loop() {
 
   Serial.printf("state:");
   Serial.println(state.state,BIN);
-  delay(1800);
+  delay(2000);
 
 }

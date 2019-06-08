@@ -10,10 +10,12 @@ void parse(const String command,State &state,Task &task){
     Serial.printf("size%d \n", vecstr.size());
     return;
   }
-
+  for(String s:vecstr){
+    Serial.printf("data:%s\n",s.c_str());
+  }
   Serial.printf("size%d \n", vecstr.size());
   int i = 0;
-  Serial.printf("%s\n", (str_reserve+" "+str_open+" "+str_set_std_time+" "+str_set_reserve_time).c_str());
+  // Serial.printf("%s\n", (str_reserve+" "+str_open+" "+str_set_std_time+" "+str_set_reserve_time).c_str());
   try{
     if (vecstr[i] == str_open){
       state.state |= State::open;
@@ -26,9 +28,11 @@ void parse(const String command,State &state,Task &task){
 
     }else if(vecstr[i] == str_reserve){
       i++;
-
+      Serial.printf("reserve\n");
       if(vecstr[i] == str_open){
         task.open();
+        Serial.printf("open\n");
+
         i++;
       }else if(vecstr[i] == str_close){
         task.close();
@@ -39,14 +43,19 @@ void parse(const String command,State &state,Task &task){
 
       }else{
         i++;
+        Serial.printf("else\n");
+
       }
 
       if(vecstr[i] == str_set_std_time){
+        Serial.printf("std\n");
         i++;
         task.set_std_time(vecstr[i]);
         i++;
+
       }
       if(vecstr[i] == str_set_reserve_time){
+        Serial.printf("reservetime\n");
         i++;
         task.set_reserve_time(vecstr[i]);
         i++;
@@ -81,17 +90,19 @@ void read_button(State &state){
   }
 }
 
-void split(String s,std::vector<String> &vecstr){
+void split(const String s,std::vector<String> &vecstr){
   if(s.length() == 0){
     return;
   }
-  s += char_split;
-  for(int i = 0,prei = 0;i < s.length();i++){
-    if(s[i] == char_split){
-      vecstr.push_back(s.substring(prei, i));
-      prei = i;
+  int end,start;
+  for(end = 0,start = 0;end < s.length();end++){
+    if(s[end] == char_split){
+      vecstr.push_back(s.substring(start, end));
+      start = end + 1;
     }
   }
+  // add last element
+  vecstr.push_back(s.substring(start,end));
 
 }
 
