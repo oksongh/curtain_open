@@ -4,8 +4,8 @@
 #include <Arduino.h>
 #include <vector>
 #include "state.h"
-#include "pinassign.h"
-#include "keyword.h"
+#include "constants/pinassign.h"
+#include "constants/keyword.h"
 #include "task.h"
 #include "constants/output_parameters.h"
 

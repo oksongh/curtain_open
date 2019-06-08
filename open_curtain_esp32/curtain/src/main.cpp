@@ -2,7 +2,7 @@
 #include "wifi_handler.h"
 #include "etc.h"
 #include "state.h"
-#include "pinassign.h"
+#include "constants/pinassign.h"
 #include "task.h"
 
 

@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
-#include "keyword.h"
+#include "constants/keyword.h"
 
 const char ssid[] = "curtain";
 const char pass[] = "curtainopen";
