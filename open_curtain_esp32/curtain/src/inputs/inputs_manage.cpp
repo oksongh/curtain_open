@@ -1,5 +1,18 @@
 #include "inputs_manage.h"
 
+State state;
+wifi_handler wh;
+
+State input(){
+  wh.read_udp();
+  return state;
+}
+
+void setup_input(){
+  wh.setup_wifiAP();
+  wh.setup_wifi();
+}
+
 void parse(const String command,State &state,Task &task){
 // command :str_none,and so on
 
@@ -19,6 +32,7 @@ void parse(const String command,State &state,Task &task){
   try{
     if (vecstr[i] == str_open){
       state.state |= State::open;
+
 
       i++;
 

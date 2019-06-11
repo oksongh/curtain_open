@@ -1,14 +1,11 @@
 #include <Arduino.h>
 #include "wifi_handler.h"
-#include "etc.h"
 #include "state.h"
-#include "constants/pinassign.h"
 #include "task.h"
+#include "outputs/output_manege.h"
+#include "inputs/inputs_manage.h"
 
-
-wifi_handler wh;
-String command;
-State state;
+// String command;
 Task task;
 
 void setup() {

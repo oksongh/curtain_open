@@ -5,7 +5,12 @@
 #include <vector>
 #include "state.h"
 #include "task.h"
+#include "wifi_handler.h"
 #include "constants/keyword.h"
+
+State input();
+
+void setup_input();
 
 void parse(const String command,State &state,Task &task);
 
