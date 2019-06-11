@@ -125,8 +125,8 @@ void output(State state) {
   }
 }
 void open_curtain(){
-  ledcWrite(channelA,200);
-  ledcWrite(channelB,200);
+  ledcWrite(channelA,30000);
+  ledcWrite(channelB,0);
 
   delay(opentime_ms);
 
