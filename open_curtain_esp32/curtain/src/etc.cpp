@@ -130,17 +130,17 @@ void open_curtain(){
 
   delay(opentime_ms);
 
-  ledcWrite(channelA,neutral_output);
-  ledcWrite(channelB,neutral_output);
+  ledcWrite(channelA,0);
+  ledcWrite(channelB,0);
 }
 
 void close_curtain(){
   ledcWrite(channelA,0);
-  ledcWrite(channelB,0);
+  ledcWrite(channelB,30000);
 
   delay(closetime_ms);
 
-  ledcWrite(channelA,neutral_output);
-  ledcWrite(channelB,neutral_output);
+  ledcWrite(channelA,0);
+  ledcWrite(channelB,0);
 
 }

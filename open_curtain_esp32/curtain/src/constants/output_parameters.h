@@ -8,6 +8,6 @@ const int motor_resol = 16;
 
 const double opentime_ms = 1000;
 const double closetime_ms = 1000;
-const int neutral_output = 256;
+// const int neutral_output = 256;
 
 #endif
