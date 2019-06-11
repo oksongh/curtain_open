@@ -1,16 +1,19 @@
 #include "inputs_manage.h"
 
-State state;
-wifi_handler wh;
+void split(const String s,std::vector<String> &vecstr){
+  if(s.length() == 0){
+    return;
+  }
+  int end,start;
+  for(end = 0,start = 0;end < s.length();end++){
+    if(s[end] == char_split){
+      vecstr.push_back(s.substring(start, end));
+      start = end + 1;
+    }
+  }
+  // add last element
+  vecstr.push_back(s.substring(start,end));
 
-State input(){
-  wh.read_udp();
-  return state;
-}
-
-void setup_input(){
-  wh.setup_wifiAP();
-  wh.setup_wifi();
 }
 
 void parse(const String command,State &state,Task &task){
@@ -32,8 +35,6 @@ void parse(const String command,State &state,Task &task){
   try{
     if (vecstr[i] == str_open){
       state.state |= State::open;
-
-
       i++;
 
     }else if(vecstr[i] == str_close){
@@ -77,7 +78,6 @@ void parse(const String command,State &state,Task &task){
 
     }else{
 
-
     }
     Serial.printf("i:%d \n", i);
 
@@ -86,7 +86,21 @@ void parse(const String command,State &state,Task &task){
   }
 }
 
-void read_button(State &state){
+State inputs_manage::reload(){
+  state.state = State::none;
+  parse(wh.read_udp(),state,task);
+  task.check_time(state);
+  read_button(state);
+  return state;
+}
+
+void inputs_manage::setup_input(){
+  wh.setup_wifiAP();
+  wh.setup_wifi();
+
+}
+
+void inputs_manage::read_button(State &state){
   bool isopen = digitalRead(open_button);
   bool isclose = digitalRead(close_button);
   if(isopen && isclose){
@@ -102,20 +116,4 @@ void read_button(State &state){
     Serial.println("open");
   }else{
   }
-}
-
-void split(const String s,std::vector<String> &vecstr){
-  if(s.length() == 0){
-    return;
-  }
-  int end,start;
-  for(end = 0,start = 0;end < s.length();end++){
-    if(s[end] == char_split){
-      vecstr.push_back(s.substring(start, end));
-      start = end + 1;
-    }
-  }
-  // add last element
-  vecstr.push_back(s.substring(start,end));
-
 }

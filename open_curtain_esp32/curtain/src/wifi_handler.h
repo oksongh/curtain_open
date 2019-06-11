@@ -11,15 +11,18 @@ const char pass[] = "curtainopen";
 const int localPort = 8000;
 const IPAddress ip(192, 168, 4, 1);
 const IPAddress subnet(255, 255, 255, 0);
-WiFiUDP udp;
-String msg;
 
 class wifi_handler {
+private:
+
+  static WiFiUDP udp;
+  static String msg;
 
 public:
   void setup_wifi(){
     udp.begin(ip, localPort);
   }
+  
   void setup_wifiAP(){
     WiFi.softAP(ssid, pass);
     // WiFi.softAP(ssid);

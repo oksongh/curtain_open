@@ -6,17 +6,25 @@
 #include "state.h"
 #include "task.h"
 #include "wifi_handler.h"
+#include "constants/pinassign.h"
 #include "constants/keyword.h"
-
-State input();
-
-void setup_input();
-
-void parse(const String command,State &state,Task &task);
-
-void read_button(State &state);
 
 void split(const String,std::vector<String> &vecstr);
 
+void parse(const String command,State &state,Task &task);
+
+class inputs_manage{
+public:
+  State state;
+  wifi_handler wh;
+  Task task;
+
+  State reload();
+
+  void setup_input();
+
+  void read_button(State &state);
+
+};
 
 #endif

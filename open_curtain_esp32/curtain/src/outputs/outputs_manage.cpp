@@ -1,4 +1,4 @@
-# include "output_manege.h"
+# include "outputs_manage.h"
 
 void output(State state) {
 
