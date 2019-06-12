@@ -88,16 +88,16 @@ void parse(const String command,State &state,Task &task){
 
 State inputs_manage::reload(){
   state.state = State::none;
-  parse(wh.read_udp(),state,task);
+  parse(wifi_handler::read_udp(), state, task);
   task.check_time(state);
   read_button(state);
   return state;
 }
 
 void inputs_manage::setup_input(){
-  wh.setup_wifiAP();
-  wh.setup_wifi();
 
+  wifi_handler::setup_wifi();
+  wifi_handler::setup_wifiAP();
 }
 
 void inputs_manage::read_button(State &state){

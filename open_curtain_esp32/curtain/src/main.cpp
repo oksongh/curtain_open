@@ -8,6 +8,7 @@
 // String command;
 // Task task;
 inputs_manage input;
+State state;
 
 void setup() {
   // put your setup code here, to run once:
@@ -21,9 +22,9 @@ void setup() {
 }
 
 void loop() {
-
+  state = input.reload();
   Serial.printf("state:");
-  Serial.println(input.state.state,BIN);
+  Serial.println(state.state,BIN);
 
   output(state);
 
